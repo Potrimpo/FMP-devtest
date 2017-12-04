@@ -8,7 +8,7 @@
 
 (deftest large-primes
   (testing "validate the first 30 primes"
-    (is (= real-primes (take primes 30))))
+    (is (= real-primes (take 30 primes))))
   (testing "ensure the algorithm does not overflow at large numbers"
     (is (= 20000 (count (take 20000 primes))))))
 
