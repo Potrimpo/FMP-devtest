@@ -1,4 +1,5 @@
-(ns fmp-devtest.core)
+(ns fmp-devtest.core
+  (:gen-class))
 
 (defn- move-prime-to-next-factor
   "adds prime number under key: (prime + composite)"
@@ -25,13 +26,13 @@
   [xs]
   (str "| " (clojure.string/join " | " xs) " |"))
 
-(defn main
+(defn -main
   "pretty-prints a multiplication table of prime numbers"
   [n]
   ; no point being lazy for this function, we're going to have to print the whole list out on one line anyway
-  (let [ps (take n primes)
+  (let [ps (take (read-string n) primes)
         t (tables ps)]
     (println (str "|   " (pretty-printer ps)))
-    (map-indexed (fn [i line]
-                   (println (pretty-printer (cons (nth ps i) line))))
-                 t)))
+    (dorun (map-indexed (fn [i line]
+                         (println (pretty-printer (cons (nth ps i) line))))
+                       t))))
