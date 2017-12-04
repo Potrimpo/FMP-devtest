@@ -15,3 +15,8 @@
                                  (inc n))))))
 
 (def primes (prime-gen {} 2))
+
+(defn tables [xs]
+  "WARNING: GREEDY -- outputs the multiplication table for xs"
+  (map #(map (partial * %) xs)
+       xs))
